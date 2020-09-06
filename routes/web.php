@@ -20,4 +20,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/signup', 'UserController@postSignUp')->name('signup');
     Route::post('/signin', 'UserController@postSignIn')->name('signin');
     Route::get('/dashboard', 'UserController@getDashboard')->name('dashboard')->middleware('auth');
+    Route::post('/createpost', 'PostController@postCreatePost')->name('post.create');
 });
