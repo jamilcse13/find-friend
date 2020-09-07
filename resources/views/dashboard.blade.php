@@ -17,31 +17,20 @@
     <section class="row posts">
         <div class="col-md-6 col-md-offset-3">
             <header><h3>    What other people say...</h3></header>
-            <article class="post">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis architecto quisquam dolores, impedit qui quia error, dolorem, dolore quibusdam aspernatur fugiat maxime. Qui adipisci quasi, deserunt fuga quod animi voluptatum.</p>
-                <div class="info">
-                    Posted by Jamil on 6th July 2020
-                </div>
-                <div class="interaction">
-                    <a href="#">Like</a> |
-                    <a href="#">Dislike</a> |
-                    <a href="#">Edit</a> |
-                    <a href="#">Delete</a>
-                </div>
-            </article>
-
-            <article class="post">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis architecto quisquam dolores, impedit qui quia error, dolorem, dolore quibusdam aspernatur fugiat maxime. Qui adipisci quasi, deserunt fuga quod animi voluptatum.</p>
-                <div class="info">
-                    Posted by Jamil on 6th July 2020
-                </div>
-                <div class="interaction">
-                    <a href="#">Like</a> |
-                    <a href="#">Dislike</a> |
-                    <a href="#">Edit</a> |
-                    <a href="#">Delete</a>
-                </div>
-            </article>
+            @foreach ($posts as $post)
+                <article class="post">
+                    <p>{{ $post->body }}</p>
+                    <div class="info">
+                        Posted by {{ $post->user->name }} on {{ $post->created_at }}
+                    </div>
+                    <div class="interaction">
+                        <a href="#">Like</a> |
+                        <a href="#">Dislike</a> |
+                        <a href="#">Edit</a> |
+                        <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
+                    </div>
+                </article>
+            @endforeach
         </div>
     </section>
 @endsection
